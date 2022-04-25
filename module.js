@@ -106,48 +106,63 @@ function addCookies(strName, strValue) {
 function getPremadeContainer(intSelection) {
 	switch (intSelection) {
 		case 0: // Main Menu
-			setFade(true);
-			//setElement(document.body, 'audio', 'audMenu', 'audio/ogg', 'aud/menu.ogg', '<NOCLASS>', false, true, true);
-			//setElement(document.body, 'audio', 'audStart', 'audio/ogg', 'aud/start.ogg', '<NOCLASS>', false, true, true);
-			setElement(document.body, 'div', 'cntMenuSelection', '<NOTYPE>', '<NOVALUE>', '<NOCLASS>', false, false);
-			setElement(cntMenuSelection, 'img', 'imgMenuMe', 'image/png', 'images/me.png', 'image', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuPortfolio', 'image/png', 'images/portfolio.png', 'image', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuGallery', 'image/png', 'images/gallery.png', 'image', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuExit', 'image/png', 'images/exit.png', 'image', false, true);
-			//audMenu.play();
+			setElement(document.body, 'audio', 'audMenu', 'audio/ogg', 'audio/menu.ogg', '', false, true, true);
+			setElement(document.body, 'audio', 'audStart', 'audio/ogg', 'audio/titleSelect.ogg', '', false, true, true);
+			setElement(document.body, 'div', 'cntMenuSelection', '', '', 'fade-out', false, false);
+			setElement(cntMenuSelection, 'img', 'imgMenuMe', 'image/png', 'images/me.png', '', false, true);
+			setElement(cntMenuSelection, 'img', 'imgMenuPortfolio', 'image/png', 'images/portfolio.png', '', false, true);
+			setElement(cntMenuSelection, 'img', 'imgMenuGallery', 'image/png', 'images/gallery.png', '', false, true);
+			setElement(cntMenuSelection, 'img', 'imgMenuExit', 'image/png', 'images/exit.png', '', false, true);
+			audMenu.play();
 		
+			setTimeout(function() {
+				cntMenuSelection.classList.remove();
+			}, 500);
+
 			imgMenuMe.onclick = function () {
 				setTimeout(function () { startCare(); }, 800);
 				setFade(false);
-				//audStart.play();
+				audStart.play();
 			};
 		
 			imgMenuPortfolio.onclick = function () {
 				setTimeout(function () { startBattle(); }, 800);
 				setFade(false);
-				//audStart.play();
+				audStart.play();
 			}
 		
 			imgMenuGallery.onclick = function () {
 				setTimeout(function () { startWorld(); }, 800);
 				setFade(false);
-				//audStart.play();
+				audStart.play();
 			}
 		
 			imgMenuExit.onclick = function () {
-				setTimeout(function () { location.href = 'https://www.google.com/'; }, 500);
+				setTimeout(function () { location.href = 'https://www.google.com/'; }, 100);
 				setFade(false);
-				//audStart.play();
+				audStart.play();
 			}
 			break;
 		default: // Title screen
-			setElement(document.body, 'div', 'cntFirstTimePopup', '', '', '', false, false);
-			setElement(cntFirstTimePopup, 'label', 'lblHeader', '', 'INFORMATION', 'label', true, false);
-			setElement(cntFirstTimePopup, 'label', 'lblInformation00', '', 'This website uses cookies to autosave progress.', 'label', true, false);
-			setElement(cntFirstTimePopup, 'label', 'lblInformation01', '', 'To avoid loss of progress, ensure that your browser does not delete cookies upon close for this website.', 'label', true, false);
-			setElement(cntFirstTimePopup, 'label', 'lblInformation01', '', 'Nevertheless, enjoy the experience!', 'label', true, false);
-			setElement(cntFirstTimePopup, 'input', 'btnOK', 'button', 'OK', 'button', false, false);
-			setElement(document.body, 'audio', 'audFirstClick', 'audio/ogg', 'aud/firstClick.ogg', '', false, true);
+			setElement(document.body, 'div', 'cntTitle', '', '', '', false, false);
+			setElement(cntTitle, 'label', 'lblTitle', '', 'Banoy.NET', 'label', true, false);
+			setElement(cntTitle, 'label', 'lblStart', '', 'Click here to continue', 'label', true, false);
+
+			lblStart.onclick = function() {
+				setElement(cntTitle, 'audio', 'audtitleSelect', 'audio/ogg', 'audio/titleSelect.ogg', '', false, true);
+				audtitleSelect.play();
+				lblTitle.classList.add('title-fade');
+				lblStart.classList.add('title-fade');
+
+				setTimeout(function() {
+					cntTitle.remove();
+				}, 1900);
+
+				setTimeout(function() {
+					getPremadeContainer(0);
+				}, 2100);
+			}
+			break;
 	}
 }
 

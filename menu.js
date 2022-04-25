@@ -1,3 +1,3 @@
 ﻿function startMenu() {
-    getPremadeContainer(0);
+    getPremadeContainer();
 }
