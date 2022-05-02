@@ -211,14 +211,14 @@ function getPremadeContainer(intSelection) {
 				intDegrees += 45;
 				cntRotor.style.transform = 'rotate(' + intDegrees + 'deg)';
 
-				cntCircleTop.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleTopRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleMiddleRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleBottomRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleBottom.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleBottomLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleMiddleLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
-				cntCircleTopLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleTop.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleTopRight.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleMiddleRight.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottomRight.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottom.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottomLeft.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleMiddleLeft.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleTopLeft.style.transform = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
 			}
 
 			cntCircleMiddleRight.onclick = function () {
