@@ -169,16 +169,16 @@ function getPremadeContainer(intSelection) {
 			setElement(cntRotor, 'div', 'cntCircleMiddleCenter', '', '', 'InnerRotorMiddle', false, false);
 			audMusic.play();
 
-			cntRotor.style.rotate = "0deg";
+			cntRotor.style.transform = "rotate(0deg)";
 
-			cntCircleTop.style.rotate = "0deg";
-			cntCircleTopRight.style.rotate = "0deg";
-			cntCircleMiddleRight.style.rotate = "0deg";
-			cntCircleBottomRight.style.rotate = "0deg";
-			cntCircleBottom.style.rotate = "0deg";
-			cntCircleBottomLeft.style.rotate = "0deg";
-			cntCircleMiddleLeft.style.rotate = "0deg";
-			cntCircleTopLeft.style.rotate = "0deg";
+			cntCircleTop.style.transform = "rotate(0deg)";
+			cntCircleTopRight.style.transform = "rotate(0deg)";
+			cntCircleMiddleRight.style.transform = "rotate(0deg)";
+			cntCircleBottomRight.style.transform = "rotate(0deg)";
+			cntCircleBottom.style.transform = "rotate(0deg)";
+			cntCircleBottomLeft.style.transform = "rotate(0deg)";
+			cntCircleMiddleLeft.style.transform = "rotate(0deg)";
+			cntCircleTopLeft.style.transform = "rotate(0deg)";
 
 			cntCircleTop.onclick = function () {
 				audFail.play() }
@@ -207,18 +207,18 @@ function getPremadeContainer(intSelection) {
 			
 			cntCircleMiddleCenter.onclick = function () {
 				audRotate.play();
-				intDegrees = parseInt(cntRotor.style.rotate.match(/\d+/));
+				intDegrees = parseInt(cntRotor.style.transform.match(/\d+/));
 				intDegrees += 45;
-				cntRotor.style.rotate = intDegrees + 'deg';
+				cntRotor.style.transform = 'rotate(' + intDegrees + 'deg)';
 
-				cntCircleTop.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleTopRight.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleMiddleRight.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleBottomRight.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleBottom.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleBottomLeft.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleMiddleLeft.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
-				cntCircleTopLeft.style.rotate = (intDegrees - (intDegrees * 2)) + 'deg';
+				cntCircleTop.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleTopRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleMiddleRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottomRight.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottom.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleBottomLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleMiddleLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
+				cntCircleTopLeft.style.rotate = 'rotate(' + (intDegrees - (intDegrees * 2)) + 'deg)';
 			}
 
 			cntCircleMiddleRight.onclick = function () {
@@ -252,6 +252,11 @@ function getPremadeContainer(intSelection) {
 			break;
 		case 3: // Gallery
 			document.body.style.backgroundImage = 'url("images/marble.png")';
+
+			setElement(document.body, 'div', 'cntGallery', '', '', '', false, false);
+			setElement(cntGallery, 'div', 'cntGalleryFrame', '', '', '', false, false);
+			setElement(cntGalleryFrame, 'div', 'cntGalleryImage', '', '', '', false, false);
+
 			break;
 		case 4: // Generic Description Page (under Portfolio section)
 			// Create a new container that presents brief information about the project
@@ -259,7 +264,7 @@ function getPremadeContainer(intSelection) {
 			setElement(cntProject, 'div', 'cntProjectText', '', '', '', false, false);
 			setElement(cntProject, 'label', 'lblProjectTitle', '', 'Project Title', '', true, false);
 			setElement(cntProjectText, 'label', 'lblProjectDescription', '', 'Project Description', '', true, false);
-			setElement(cntProject, 'img', 'imgProjectCover', 'img/png', "images/projectBoxCover.jpg", '', false, true);
+			setElement(cntProject, 'img', 'imgProjectCover', 'image/png', "images/projectBoxCover.jpg", '', false, true);
 			setElement(cntProject, 'label', 'lblProjectStart', '', 'Start', '', true, false);
 			setElement(cntProject, 'label', 'lblProjectBack', '', 'Go Back', '', true, false);
 

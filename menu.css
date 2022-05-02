@@ -135,7 +135,7 @@ body {
     border: 20px solid white;
     background-image: linear-gradient(to right, darkred,red 50%,blue 50%,darkblue);
     z-index: 1;
-    rotate: 0deg;
+    transform: rotate(0deg);
     transition-duration: 0.5s;
 }
 
@@ -295,6 +295,22 @@ body {
     width: 14vw;
     filter:drop-shadow(0 0 1vh rgb(0, 0, 0));
     border-radius:1vh;
+}
+
+/***********************************************************/
+/************************** Gallery ************************/
+#cntGallery {
+   display:flex;
+   justify-content: center;
+}
+
+#cntGalleryFrame {
+    background-image: url("images/galleryFrame.png");
+    height: 37.8vw;
+    width: 75vw;
+    background-size: 75vw 38.8vw;
+    top: 5vw;
+    position: absolute;
 }
 
 /***********************************************************/
