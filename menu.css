@@ -60,6 +60,16 @@ body {
         backdrop-filter: blur(0px);
     } 
 }
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(100%) rotate(30deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
 /***********************************************************/
 
 /************************* Module **************************/
@@ -96,8 +106,8 @@ body {
 
     position: relative;
     top: 20vh;
-    height: 60vh;
-
+    height: 50vh;
+    filter: drop-shadow(0.5vh 0.5vh 0.6vh rgb(0, 0, 0));
 }
 /***********************************************************/
 
@@ -137,10 +147,12 @@ body {
     z-index: 1;
     transform: rotate(0deg);
     transition-duration: 0.5s;
+    filter:drop-shadow(0 0 1vh rgb(0, 0, 0));
 }
 
 #cntRotor > div {
     transition-duration: 0.5s;
+    filter:drop-shadow(0 0 1vh rgb(0, 0, 0));
 }
 
 .InnerRotorTop, .InnerRotorTopDiagonal,
@@ -298,6 +310,7 @@ body {
 }
 
 /***********************************************************/
+
 /************************** Gallery ************************/
 #cntGallery {
    display:flex;
@@ -314,3 +327,22 @@ body {
 }
 
 /***********************************************************/
+
+/***************************** Me **************************/
+.slide-in-top {
+    animation-name: slide-in-top;
+    animation-duration: 0.5s;
+    perspective: 1000px;
+}
+
+#cntBusinessCard {
+    background-image:linear-gradient(100deg,white 49.5%, darkgray 50%, blue 50%);
+    display:flex;
+    position: absolute;
+    height: 38vw;
+    width: 74vw;
+    top: 5vw;
+    left: 13vw;
+    background-color: white;
+    filter:drop-shadow(0 0 1vh rgb(0, 0, 0));
+}

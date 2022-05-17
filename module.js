@@ -146,6 +146,14 @@ function getPremadeContainer(intSelection) {
 			break;
 		case 1: // Me
 			document.body.style.backgroundImage = 'url("images/code.png")';
+
+			setElement(document.body, 'div', 'cntBusinessCard', '', '', 'slide-in-top', false, false);
+
+			setTimeout(function () {
+				cntBusinessCard.classList.remove(); }, 500);
+
+
+				
 			break;
 		case 2: // Portfolio
 
