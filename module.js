@@ -323,17 +323,15 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			setElement(document.body, 'audio', 'audSelect', 'audio/ogg', 'audio/gallerySelect.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audDeselect', 'audio/ogg', 'audio/galleryDeselect.ogg', '', false, true, true);
 			setElement(document.body, 'div', 'cntGalleryItems', '', '', '', false, false);
+			setElement(document.body, 'img', 'imgExitGallery', 'images/png', 'images/goBack.png', '', false, true);			
 
-			
-
-			document.body.onclick = function() {
+			imgExitGallery.onclick = function() {
 				audDeselect.play();
 				setFade(false);
 
 				setTimeout(function() {
 					setFade(true);
 					getPremadeContainer(0);
-					document.body.onclick = undefined;
 				}, 500)
 			};
 
