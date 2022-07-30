@@ -103,7 +103,7 @@ function addCookies(strName, strValue) {
 	}
 }
 
-function getPremadeContainer(intSelection) {
+function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, imgReplacement) {
 	switch (intSelection) {
 		case 0: // Main Menu
 			document.body.style.backgroundImage = 'url("images/checkerboard.gif")';
@@ -115,10 +115,6 @@ function getPremadeContainer(intSelection) {
 			setElement(cntMenuSelection, 'img', 'imgMenuGallery', 'image/png', 'images/gallery.png', '', false, true);
 			setElement(cntMenuSelection, 'img', 'imgMenuExit', 'image/png', 'images/exit.png', '', false, true);
 			audMenu.play();
-		
-			setTimeout(function() {
-				cntMenuSelection.classList.remove();
-			}, 500);
 
 			imgMenuMe.onclick = function () {
 				setFade(false);
@@ -134,7 +130,7 @@ function getPremadeContainer(intSelection) {
 		
 			imgMenuGallery.onclick = function () {
 				setFade(false);
-				setTimeout(function () {setFade(true); getPremadeContainer(3); }, 500);
+				setTimeout(function () {setFade(true); getPremadeContainer(7)}, 500);
 				audStart.play();
 			}
 		
@@ -148,12 +144,17 @@ function getPremadeContainer(intSelection) {
 			document.body.style.backgroundImage = 'url("images/code.png")';
 
 			setElement(document.body, 'div', 'cntBusinessCard', '', '', 'slide-in-top', false, false);
+			setElement(cntBusinessCard, 'img', 'imgMyself', 'image/png', 'images/myself.png', '', false, true);
+			setElement(document.body, 'div', 'cntBusinessCardText', '', '', 'slide-in-top', false, false);
+			setElement(cntBusinessCardText, 'label', 'lblTitle', '', 'Summary', '', true, false);
+			setElement(cntBusinessCardText, 'label', 'lblBulletPoint00', '', 'Proficient student of I.T. Programming with strong mathematical, graphic design, and computer skills.', '', true, false);
+			setElement(cntBusinessCardText, 'label', 'lblBulletPoint01', '', 'Project-oriented programmer with good work ethics and excellent communication skills.', '', true, false);
+			setElement(cntBusinessCardText, 'label', 'lblBulletPoint01', '', 'Work effectively with diverse groups of people, both independently and as a team member.', '', true, false);
 
 			setTimeout(function () {
-				cntBusinessCard.classList.remove(); }, 500);
-
-
+				cntBusinessCard.classList= ""; }, 500);
 				
+			
 			break;
 		case 2: // Portfolio
 
@@ -258,12 +259,18 @@ function getPremadeContainer(intSelection) {
 			}
 
 			break;
-		case 3: // Gallery
-			document.body.style.backgroundImage = 'url("images/marble.png")';
+		case 3: // Generic Gallery Item
+			let imgTemp = setElement(cntParent, 'img', 'imgGalleryImage' + intIncrement, 'image/png', 'images/galleryImage.png', '', false, true);
 
-			setElement(document.body, 'div', 'cntGallery', '', '', '', false, false);
-			setElement(cntGallery, 'div', 'cntGalleryFrame', '', '', '', false, false);
-			setElement(cntGalleryFrame, 'div', 'cntGalleryImage', '', '', '', false, false);
+			imgTemp.onclick = function() {
+
+				if (imgTemp.src.includes("images/galleryImage.png")) {
+					audFail.play();
+				} else {
+					getPremadeContainer(6);
+				}
+				
+			};
 
 			break;
 		case 4: // Generic Description Page (under Portfolio section)
@@ -277,6 +284,63 @@ function getPremadeContainer(intSelection) {
 			setElement(cntProject, 'label', 'lblProjectBack', '', 'Go Back', '', true, false);
 
 			setTimeout(function () {cntProject.classList = ""}, 500);
+
+			break;
+		case 5: // Populating page 1 of the gallery
+			const intTotalImages = 4;
+			let intImagesToDisplay = intTotalImages;
+
+			if (intImagesToDisplay > 20) {
+				intImagesToDisplay = 20;
+			}
+
+			for (let i = intIncrement; i < intImagesToDisplay; i++) {
+				cntGalleryItems.children[i].src = "images/galleryItems/" + i + "tmb.png";
+				cntGalleryItems.children[i].onclick = function() {
+					getPremadeContainer(6, null, null, null, "images/galleryItems/" + i + "exp.png");
+				};
+			}
+
+		 	break;
+		case 6: // Generic expanded view of an image
+			audSelect.play();
+			setElement(document.body, 'div', 'cntExpandedViewBackground', '', '', 'fade-out', false, false);	
+			setElement(cntExpandedViewBackground, 'img', 'imgExpandedImage', 'image/png', imgReplacement, 'fade-out', false, true);
+			setElement(cntExpandedViewBackground, 'img', 'imgDetails', 'image/png', 'images/info.png', 'fade-out', false, true);
+
+			imgExpandedImage.onclick = function () {
+				audDeselect.play();
+				cntExpandedViewBackground.classList = "fade-in";
+				setTimeout(function () {
+					cntExpandedViewBackground.remove();
+				}, 1000);
+			}
+
+			break;
+		case 7: // Gallery Screen
+			document.body.style.backgroundImage = 'url("images/marble.png")';
+			setElement(document.body, 'audio', 'audFail', 'audio/ogg', 'audio/itemFail.ogg', '', false, true, true);
+			setElement(document.body, 'audio', 'audSelect', 'audio/ogg', 'audio/gallerySelect.ogg', '', false, true, true);
+			setElement(document.body, 'audio', 'audDeselect', 'audio/ogg', 'audio/galleryDeselect.ogg', '', false, true, true);
+			setElement(document.body, 'div', 'cntGalleryItems', '', '', '', false, false);
+
+			
+
+			document.body.onclick = function() {
+				audDeselect.play();
+				setFade(false);
+
+				setTimeout(function() {
+					setFade(true);
+					getPremadeContainer(0);
+					document.body.onclick = undefined;
+				}, 500)
+			};
+
+			for (let i = 0; i < 20; i++) {
+				getPremadeContainer(3, cntGalleryItems, i);
+			}
+			getPremadeContainer(5, null, 0);
 
 			break;
 		default: // Title screen
@@ -300,25 +364,5 @@ function getPremadeContainer(intSelection) {
 				}, 2100);
 			}
 			break;
-	}
-}
-
-function getCutscene(intSelection, arrAdditionalParameters) {
-	switch (intSelection) {
-		case 0:
-			break;
-		default: // Intro
-			setTimeout(function() {setFade(false);}, arrAdditionalParameters[0] * 1000)
-			setTimeout(function() {setFade(true);
-								setElement(document.body, 'img', 'imgScene', '', 'img/gif/intro.gif', '', false, true);
-								setElement(document.body, 'div', 'cntBackgroundEffect', '', '', '', false, false);
-								setElement(document.body, 'audio', 'audIntro', 'audio/ogg', 'aud/intro2.ogg', '', false, true);
-								audIntro.play();}, arrAdditionalParameters[0] * 1000 + 500);
-			setTimeout(function() {cntBackgroundEffect.style.backgroundImage = "url('img/gif/flashLong.gif')"}, 33000 + 5000);
-			setTimeout(function() {cntBackgroundEffect.style.backgroundImage = ""}, 35000 + 5000);
-			setTimeout(function() {cntBackgroundEffect.style.backgroundImage = "url('img/gif/flashLong.gif')"}, 50000 + 5000);
-			setTimeout(function() {cntBackgroundEffect.style.backgroundImage = ""}, 52000 + 5000);
-			setTimeout(function() {setFade(false);}, arrAdditionalParameters[1] + 5000);
-			setTimeout(function() {startWorld(false); setFade(true);}, arrAdditionalParameters[1] + 6000);
 	}
 }
