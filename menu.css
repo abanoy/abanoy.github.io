@@ -142,7 +142,7 @@ body {
 #cntTitle > #lblTitle {
     font-size: 25vh;
     font-weight: normal;
-    font-family: monospace;
+    font-family: system-ui;
 }
 /***********************************************************/
 
