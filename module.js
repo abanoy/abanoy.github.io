@@ -93,7 +93,7 @@ function addCookies(strName, strValue) {
 
 	// Do a loop hole to check if the cookie is a number
 	for (let objKey in objCookies) {
-		
+
 		// If the value in key consists of only digits
 		if (!isNaN(objCookies[objKey])) {
 
@@ -106,35 +106,41 @@ function addCookies(strName, strValue) {
 function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, imgReplacement) {
 	switch (intSelection) {
 		case 0: // Main Menu
-			document.body.style.backgroundImage = 'url("images/checkerboard.gif")';
+			document.body.style.backgroundImage = 'url("images/menu.gif")';
 			setElement(document.body, 'audio', 'audMenu', 'audio/ogg', 'audio/menu.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audStart', 'audio/ogg', 'audio/titleSelect.ogg', '', false, true, true);
 			setElement(document.body, 'div', 'cntMenuSelection', '', '', 'fade-out', false, false);
-			setElement(cntMenuSelection, 'img', 'imgMenuMe', 'image/png', 'images/me.png', '', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuPortfolio', 'image/png', 'images/portfolio.png', '', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuGallery', 'image/png', 'images/gallery.png', '', false, true);
-			setElement(cntMenuSelection, 'img', 'imgMenuExit', 'image/png', 'images/exit.png', '', false, true);
+
+			setElement(cntMenuSelection, 'label', 'lblMenuHeader', '', 'What would you like to do?', '', true, false);
+
+			setElement(cntMenuSelection, 'ul', 'ulSelection', '', '', '', false, false);
+			setElement(ulSelection, 'li', 'lblMenuMe', '', 'Learn more about him', '', true, false);
+			setElement(ulSelection, 'li', 'lblMenuPortfolio', '', 'Access the portfolio', '', true, false);
+			setElement(ulSelection, 'li', 'lblMenuGallery', '', 'View the gallery', '', true, false);
+			setElement(ulSelection, 'li', 'lblMenuExit', '', 'Exit the website', '', true, false);
+
+			audMenu.loop = true;
 			audMenu.play();
 
-			imgMenuMe.onclick = function () {
+			lblMenuMe.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(1); }, 500);
 				audStart.play();
 			};
-		
-			imgMenuPortfolio.onclick = function () {
+
+			lblMenuPortfolio.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(2); }, 500);
 				audStart.play();
 			}
-		
-			imgMenuGallery.onclick = function () {
+
+			lblMenuGallery.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(7)}, 500);
 				audStart.play();
 			}
-		
-			imgMenuExit.onclick = function () {
+
+			lblMenuExit.onclick = function () {
 				setFade(false);
 				setTimeout(function () { location.href = 'https://www.google.com/'; }, 100);
 				audStart.play();
@@ -153,13 +159,13 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 
 			setTimeout(function () {
 				cntBusinessCard.classList= ""; }, 500);
-				
-			
+
+
 			break;
 		case 2: // Portfolio
 
 			document.body.style.backgroundImage = 'url("images/halftone.png")';
-			
+
 			setElement(document.body, 'audio', 'audMusic', 'audio/ogg', 'audio/portfolio.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audRotate', 'audio/ogg', 'audio/itemRotate.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audSelect', 'audio/ogg', 'audio/itemSelect.ogg', '', false, true, true);
@@ -207,13 +213,13 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 
 			cntCircleBottomLeft.onclick = function () {
 				audFail.play() }
-			
+
 			cntCircleMiddleLeft.onclick = function () {
 				audFail.play() }
-			
+
 			cntCircleTopLeft.onclick = function () {
 				audFail.play() }
-			
+
 			cntCircleMiddleCenter.onclick = function () {
 				audRotate.play();
 				intDegrees = parseInt(cntRotor.style.transform.match(/\d+/));
@@ -269,7 +275,7 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 				} else {
 					getPremadeContainer(6);
 				}
-				
+
 			};
 
 			break;
@@ -304,7 +310,7 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 		 	break;
 		case 6: // Generic expanded view of an image
 			audSelect.play();
-			setElement(document.body, 'div', 'cntExpandedViewBackground', '', '', 'fade-out', false, false);	
+			setElement(document.body, 'div', 'cntExpandedViewBackground', '', '', 'fade-out', false, false);
 			setElement(cntExpandedViewBackground, 'img', 'imgExpandedImage', 'image/png', imgReplacement, 'fade-out', false, true);
 			setElement(cntExpandedViewBackground, 'img', 'imgDetails', 'image/png', 'images/info.png', 'fade-out', false, true);
 
@@ -323,7 +329,7 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			setElement(document.body, 'audio', 'audSelect', 'audio/ogg', 'audio/gallerySelect.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audDeselect', 'audio/ogg', 'audio/galleryDeselect.ogg', '', false, true, true);
 			setElement(document.body, 'div', 'cntGalleryItems', '', '', '', false, false);
-			setElement(document.body, 'img', 'imgExitGallery', 'images/png', 'images/goBack.png', '', false, true);			
+			setElement(document.body, 'img', 'imgExitGallery', 'images/png', 'images/goBack.png', '', false, true);
 
 			imgExitGallery.onclick = function() {
 				audDeselect.play();
