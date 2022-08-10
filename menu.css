@@ -127,8 +127,7 @@ body {
 /************************** Title **************************/
 #cntTitle {
     color: white;
-    font-weight: bold;
-    -webkit-text-stroke: 0.25vh black;
+    font-weight: Lighter;
     height: 100vh;
 }
 
@@ -142,7 +141,8 @@ body {
 
 #cntTitle > #lblTitle {
     font-size: 25vh;
-    -webkit-text-stroke: 0.35vh black;
+    font-weight: normal;
+    font-family: system-ui;
 }
 /***********************************************************/
 
