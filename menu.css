@@ -112,15 +112,18 @@ body {
 }
 
 #cntMenuSelection > label {
-
     position: relative;
     top: 20vh;
     height: 20vh;
 }
 
 #ulSelection > li {
-    list-style: none;
+    list-style-image: url("images/bullet.png");
     background-size: 10vh;
+}
+
+#ulSelection > li:hover {
+    list-style-image: url("images/bulletHover.png");
 }
 /***********************************************************/
 
