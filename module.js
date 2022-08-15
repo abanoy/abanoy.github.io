@@ -119,6 +119,8 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			setElement(ulSelection, 'li', 'lblMenuGallery', '', 'View the gallery', '', true, false);
 			setElement(ulSelection, 'li', 'lblMenuExit', '', 'Exit the website', '', true, false);
 
+
+
 			audMenu.loop = true;
 			audMenu.play();
 
