@@ -83,6 +83,19 @@ function setCookies() {
 	parseCookies();
 }
 
+function getTime() {
+	let dteClock = new Date();
+	let arrTimes = [dteClock.getHours(), dteClock.getMinutes().toString(), dteClock.getSeconds().toString()];
+
+	arrTimes.forEach(function (item, index) {
+		if (item < 10) {
+			arrTimes[index] = "0" + item;
+		}
+	});
+
+	return arrTimes[0] + ":" + arrTimes[1] + ":" + arrTimes[2];
+}
+
 function addCookies(strName, strValue) {
 	// Populate the cookie
 	Cookies.set(strName, strValue, {sameSite: 'strict', expires: 7});
@@ -109,40 +122,49 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			document.body.style.backgroundImage = 'url("images/menu.gif")';
 			setElement(document.body, 'audio', 'audMenu', 'audio/ogg', 'audio/menu.ogg', '', false, true, true);
 			setElement(document.body, 'audio', 'audStart', 'audio/ogg', 'audio/titleSelect.ogg', '', false, true, true);
-			setElement(document.body, 'div', 'cntMenuSelection', '', '', 'fade-out', false, false);
 
-			setElement(cntMenuSelection, 'label', 'lblMenuHeader', '', 'What would you like to do?', '', true, false);
+			setElement(document.body, 'div', 'cntNavigation', '', '', 'fade-out', false, false);
+			setElement(document.body, 'div', 'cntContentInformation', '', '', 'fade-out', false, false);
+			setElement(document.body, 'div', 'cntFooter', '', '', 'fade-out', false, false);
 
-			setElement(cntMenuSelection, 'ul', 'ulSelection', '', '', '', false, false);
-			setElement(ulSelection, 'li', 'lblMenuMe', '', 'Learn more about him', '', true, false);
-			setElement(ulSelection, 'li', 'lblMenuPortfolio', '', 'Access the portfolio', '', true, false);
-			setElement(ulSelection, 'li', 'lblMenuGallery', '', 'View the gallery', '', true, false);
-			setElement(ulSelection, 'li', 'lblMenuExit', '', 'Exit the website', '', true, false);
+			setElement(cntNavigation, 'lbl', 'lblNavTitle', '', 'Banoy.NET', 'fade-out', true, false);
+			setElement(cntNavigation, 'lbl', 'lblNavClock', '', getTime(), 'fade-out', true, false);
 
+			// Population for cntContentInformation
+			setElement(cntContentInformation, 'img', 'imgPreview', 'image/png', 'images/menuPreviewBlank.png', '', false, true);
+			setElement(cntContentInformation, 'div', 'cntSelection', '', '', '', false, false);
 
+			for (let i = 0; i < 4; i++) {
+				let tmpElement = setElement(cntSelection, 'cnt', 'cntMenuItem'+i, '', '', 'fade-out', false, false);
+				setElement(tmpElement, 'img', 'imgMenuItem'+i, 'image/png', 'images/menuItem'+i+'.png', 'fade-out', false, true);
+			}
+
+			setElement(cntFooter, 'lbl', 'lblFooterInformation', '', 'Sample Text', '', true, false);
 
 			audMenu.loop = true;
-			audMenu.play();
+			//audMenu.play();
 
-			lblMenuMe.onclick = function () {
+			setInterval(function() {lblNavClock.innerHTML = getTime();});
+
+			imgMenuItem0.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(1); }, 500);
 				audStart.play();
 			};
 
-			lblMenuPortfolio.onclick = function () {
+			imgMenuItem1.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(2); }, 500);
 				audStart.play();
 			}
 
-			lblMenuGallery.onclick = function () {
+			imgMenuItem2.onclick = function () {
 				setFade(false);
 				setTimeout(function () {setFade(true); getPremadeContainer(7)}, 500);
 				audStart.play();
 			}
 
-			lblMenuExit.onclick = function () {
+			imgMenuItem3.onclick = function () {
 				setFade(false);
 				setTimeout(function () { location.href = 'https://www.google.com/'; }, 100);
 				audStart.play();
