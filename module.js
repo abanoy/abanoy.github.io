@@ -134,9 +134,20 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			setElement(cntContentInformation, 'img', 'imgPreview', 'image/png', 'images/menuPreviewBlank.png', '', false, true);
 			setElement(cntContentInformation, 'div', 'cntSelection', '', '', '', false, false);
 
+			let arrInformation = ["About me", "Portfolio", "Gallery", "Exit"];
+
 			for (let i = 0; i < 4; i++) {
-				let tmpElement = setElement(cntSelection, 'cnt', 'cntMenuItem'+i, '', '', 'fade-out', false, false);
+				let tmpElement = setElement(cntSelection, 'div', 'cntMenuItem'+i, '', '', 'fade-out', false, false);
 				setElement(tmpElement, 'img', 'imgMenuItem'+i, 'image/png', 'images/menuItem'+i+'.png', 'fade-out', false, true);
+				setElement(tmpElement, 'lbl', 'lblMenuItem'+i, '', arrInformation[i], 'fade-out', true, false);
+
+				tmpElement.addEventListener('mouseover', function handleMouseOver() {
+					imgPreview.src = 'images/menuPreview' + i +'.png';
+				});
+
+				tmpElement.addEventListener('mouseout', function handleMouseOut() {
+					imgPreview.src = 'images/menuPreviewBlank.png';
+				});
 			}
 
 			setElement(cntFooter, 'lbl', 'lblFooterInformation', '', 'Sample Text', '', true, false);
@@ -144,7 +155,7 @@ function getPremadeContainer(intSelection, cntParent, intIncrement, arrTexts, im
 			audMenu.loop = true;
 			//audMenu.play();
 
-			setInterval(function() {lblNavClock.innerHTML = getTime();});
+			setInterval(function() {lblNavClock.innerHTML = getTime();}, 100);
 
 			imgMenuItem0.onclick = function () {
 				setFade(false);

@@ -93,7 +93,7 @@ body {
 /***********************************************************/
 
 /*************************** Menu **************************/
-#cntMenuSelection {
+#cntContentInformation, #cntSelection, #cntSelection > div {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -103,7 +103,37 @@ body {
     gap: 5vh;
     font-size: 5vh;
     color: rgb(223, 223, 223);
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+#cntSelection {
+    width: 50vh;
+}
+
+#cntSelection > div {
+    width: 20.120724346076457vh;
+    height: 20.120724346076457vh;
+    gap: 0vh;
     flex-flow: column;
+
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+#cntSelection > div > img {
+    width: 10.060362173038229vh;
+    height: 10.060362173038229vh;
+    filter: drop-shadow(0.5vh 0.5vh 0.6vh rgb(0, 0, 0));
+}
+
+#cntSelection > div > lbl {
+    color: white;
+    font-size: 4vh;
+}
+
+#imgPreview {
+    width: 80.48289738430583vh;
+    height: 60.36217303822938vh;
 }
 
 #cntMenuSelection > * {
